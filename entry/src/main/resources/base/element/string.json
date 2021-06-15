@@ -1,0 +1,36 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "HarmonyOSLearning"
+    },
+    {
+      "name": "mainability_description",
+      "value": "Java_Phone_Empty Feature Ability"
+    },
+    {
+      "name": "HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "javaCodeButton",
+      "value": "跳转到SecondAbility"
+    },
+    {
+      "name": "xmlCodeButton",
+      "value": "跳转到MainAbilitySlice2"
+    },
+    {
+      "name": "secondability_description",
+      "value": "Java_Phone_Empty Feature Ability"
+    },
+    {
+      "name": "main_ability_label",
+      "value": "HarmonyOSLearning"
+    },
+    {
+      "name": "second_ability_label",
+      "value": "entry"
+    }
+  ]
+}

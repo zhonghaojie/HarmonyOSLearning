@@ -1,0 +1,59 @@
+{
+  "app": {
+    "bundleName": "com.zhj.harmonyoslearning",
+    "vendor": "zhj",
+    "version": {
+      "code": 1000000,
+      "name": "1.0"
+    },
+    "apiVersion": {
+      "compatible": 4,
+      "target": 5,
+      "releaseType": "Beta1"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.zhj.harmonyoslearning",
+    "name": ".MyApplication",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home",
+              "action.main.slice2"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "com.zhj.harmonyoslearning.route.ability.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:main_ability_label",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.zhj.harmonyoslearning.route.ability.SecondAbility",
+        "icon": "$media:icon",
+        "description": "$string:secondability_description",
+        "label": "$string:second_ability_label",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ]
+  }
+}
