@@ -6,25 +6,30 @@
     ohos:width="match_parent"
     ohos:orientation="vertical">
 
-    <Text
-        ohos:id="$+id:text_helloworld"
-        ohos:height="match_content"
-        ohos:width="match_content"
-        ohos:background_element="$graphic:background_ability_main"
-        ohos:layout_alignment="horizontal_center"
-        ohos:text="$string:HelloWorld"
-        ohos:text_size="20fp"
-        />
 
     <Button
-        ohos:id="$+id:btn_to_slice2"
-        ohos:padding="50"
-        ohos:layout_alignment="horizontal_center"
-        ohos:text_size="25fp"
-        ohos:margin="30vp"
-        ohos:text_color="white"
-        ohos:background_element="$graphic:bg_xml_button"
-        ohos:text="$string:xmlCodeButton"
+        ohos:id="$+id:btn_implicit_startup"
         ohos:height="match_content"
-        ohos:width="match_content"/>
+        ohos:width="match_content"
+        ohos:background_element="$graphic:bg_xml_button"
+        ohos:layout_alignment="left"
+        ohos:left_margin="20vp"
+        ohos:padding="15vp"
+        ohos:text="$string:str_implicit_startup"
+        ohos:text_color="#ffffff"
+        ohos:text_size="25fp"
+        ohos:top_margin="10vp"/>
+
+    <Button
+        ohos:id="$+id:btn_explicit_startup"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:background_element="$graphic:bg_xml_button"
+        ohos:layout_alignment="left"
+        ohos:left_margin="20vp"
+        ohos:padding="15vp"
+        ohos:text="$string:str_explicit_startup"
+        ohos:text_color="white"
+        ohos:text_size="25fp"
+        ohos:top_margin="10vp"/>
 </DirectionalLayout>

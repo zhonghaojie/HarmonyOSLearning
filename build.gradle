@@ -5,17 +5,7 @@ def signingConfigPropsFile = rootProject.file("signing-config.properties")
 def signingConfigProps = new Properties()
 signingConfigProps.load((new FileInputStream(signingConfigPropsFile)))
 ohos {
-//    signingConfigs {
-//        debug {
-//            storeFile file('/Users/zhonghaojie/.ohos/config/auto_debug_300086000123876034.p12')
-//            storePassword '0000001859E77CDDD786B010FB85E31FB363910C16355941C7E6438C9CAC9A8F354DEDA59A5E2F5A'
-//            keyAlias = 'debugKey'
-//            keyPassword '00000018ECF3F5E8A6A399BE7C56B907BE09F1CB170591F18011268011DAEDDDB9ABA1297FA2C5BA'
-//            signAlg = 'SHA256withECDSA'
-//            profile file('/Users/zhonghaojie/.ohos/config/auto_debug_harmonyoslearning_300086000123876034.p7b')
-//            certpath file('/Users/zhonghaojie/.ohos/config/auto_debug_300086000123876034.cer')
-//        }
-//    }
+
 
     signingConfigs {
         debug {

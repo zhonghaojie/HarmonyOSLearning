@@ -14,11 +14,15 @@
     },
     {
       "name": "javaCodeButton",
-      "value": "跳转到SecondAbility"
+      "value": "Java创建的Button,到MainAbilitySlice2"
     },
     {
-      "name": "xmlCodeButton",
-      "value": "跳转到MainAbilitySlice2"
+      "name": "str_explicit_startup",
+      "value": "显示启动"
+    },
+    {
+      "name": "str_implicit_startup",
+      "value": "隐式启动"
     },
     {
       "name": "secondability_description",

@@ -22,7 +22,8 @@
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
-      "moduleType": "entry"
+      "moduleType": "entry",
+      "installationFree": false
     },
     "abilities": [
       {
@@ -46,7 +47,19 @@
         "launchType": "standard"
       },
       {
-        "orientation": "unspecified",
+        "skills": [
+          {
+            "entities": [
+              "com.zhj.harmonyoslearning.ENTITY"
+            ],
+            "actions": [
+              "com.zhj.harmonyoslearning.ACTION"
+            ]
+          }
+        ],
+        "visible": true,
+        "orientation": "portrait",
+        "formsEnabled": false,
         "name": "com.zhj.harmonyoslearning.route.ability.SecondAbility",
         "icon": "$media:icon",
         "description": "$string:secondability_description",

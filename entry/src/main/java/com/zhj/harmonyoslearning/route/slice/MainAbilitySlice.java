@@ -14,50 +14,33 @@ import ohos.agp.components.element.ShapeElement;
 import ohos.agp.utils.Color;
 import ohos.agp.utils.TextAlignment;
 import ohos.hiviewdfx.HiLog;
-import ohos.hiviewdfx.HiLogLabel;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static com.zhj.harmonyoslearning.route.utils.Const.*;
 
 public class MainAbilitySlice extends AbilitySlice implements Component.ClickedListener {
-    static final HiLogLabel TAG = new HiLogLabel(HiLog.DEBUG, 1, "生命周期");
 
+
+    public static final String ABILITY_SECOND_ACTION = "com.zhj.harmonyoslearning.ACTION";
+    public static final String ABILITY_SECOND_ENTITY = "com.zhj.harmonyoslearning.ENTITY";
+
+    Button explicitButton;
+    Button javaButton;
+    Button implicitButton;
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_main);
         createComponentInJavaCode();
-        Button xmlButton = (Button) findComponentById(ResourceTable.Id_btn_to_slice2);
-        xmlButton.setClickedListener(this);
+        explicitButton = (Button) findComponentById(ResourceTable.Id_btn_explicit_startup);
+        explicitButton.setClickedListener(this);
+        implicitButton = (Button) findComponentById(ResourceTable.Id_btn_implicit_startup);
+        implicitButton.setClickedListener(this);
         HiLog.debug(TAG, "onStart");
     }
 
-    @Override
-    public void onActive() {
-        super.onActive();
-        HiLog.debug(TAG, "onActive");
-    }
-
-    @Override
-    public void onForeground(Intent intent) {
-        super.onForeground(intent);
-        HiLog.debug(TAG, "onForeground");
-    }
-
-    @Override
-    protected void onInactive() {
-        super.onInactive();
-        HiLog.debug(TAG, "onInactive");
-    }
-
-    @Override
-    protected void onBackground() {
-        super.onBackground();
-        HiLog.debug(TAG, "onBackground");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        HiLog.debug(TAG, "onStop");
-    }
 
     /**
      * 在Java代码中添加组件
@@ -80,13 +63,12 @@ public class MainAbilitySlice extends AbilitySlice implements Component.ClickedL
 
         layout.setOrientation(Component.VERTICAL);
         //将组件添加到布局里
-        layout.addComponent(createComponent());
+        javaButton = createComponent();
+        layout.addComponent(javaButton);
     }
 
     /**
      * 创建组件
-     *
-     * @return
      */
     private Button createComponent() {
         //region 创建组件
@@ -133,19 +115,56 @@ public class MainAbilitySlice extends AbilitySlice implements Component.ClickedL
     @Override
     public void onClick(Component component) {
         switch (component.getId()) {
-            case ResourceTable.Id_btn_to_slice2:
-                present(new MainAbilitySlice2(), new Intent());
+            case ResourceTable.Id_btn_implicit_startup:
+                implicitStartup();
+                break;
+            case ResourceTable.Id_btn_explicit_startup:
+                explicitStartup();
                 break;
             case 100:
-                Intent intent = new Intent();
-                Operation operation = new Intent.OperationBuilder()
-                        .withDeviceId("")//要跳转到的设备ID，空字符串就是本设备
-                        .withBundleName("com.zhj.harmonyoslearning")//包名
-                        .withAbilityName(SecondAbility.class)
-                        .build();
-                intent.setOperation(operation);
-                startAbility(intent);
+                present(new MainAbilitySlice2(), new Intent());
                 break;
+        }
+    }
+
+    /**
+     * 显示启动
+     */
+    private void explicitStartup(){
+        Intent intent = new Intent();
+        Operation operation = new Intent.OperationBuilder()
+                .withDeviceId("")//要跳转到的设备ID，空字符串就是本设备
+                .withBundleName("com.zhj.harmonyoslearning")//包名
+                .withAbilityName(SecondAbility.class)
+                .build();
+        intent.setOperation(operation);
+        intent.setParam("param","显示启动");
+        startAbilityForResult(intent,ABILITY_SECOND_REQUEST_CODE);
+
+    }
+
+    /**
+     * 隐式启动
+     */
+    private void implicitStartup(){
+        Intent intent = new Intent();
+        Set<String> entries = new HashSet<>();
+        entries.add(ABILITY_SECOND_ENTITY);
+        Operation operation = new Intent.OperationBuilder().withDeviceId("")
+                .withAction(ABILITY_SECOND_ACTION)
+                .withEntities(entries)
+                .build();
+        intent.setOperation(operation);
+        intent.setParam("param","隐式启动");
+        startAbilityForResult(intent,ABILITY_SECOND_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onAbilityResult(int requestCode, int resultCode, Intent resultData) {
+        super.onAbilityResult(requestCode, resultCode, resultData);
+        if(requestCode == ABILITY_SECOND_REQUEST_CODE && resultCode == ABILITY_SECOND_RESULT_CODE){
+            String result = resultData.getStringParam(PARAM_SECOND_ABILITY_RESULT);
+            javaButton.setText(result);
         }
     }
 }
